@@ -1,0 +1,34 @@
+{
+  "operator": {
+    "name": "Your Name",
+    "company": "Your Company"
+  },
+
+  "api": {
+    "base_url": "https://api.jaymountconsulting.com/v1",
+    "key_env_var": "OPERATOR_PASS_API_KEY",
+    "default_timeout_ms": 30000,
+    "retry_on_429": true,
+    "retry_count": 2
+  },
+
+  "cache": {
+    "tool_catalog_ttl_seconds": 300,
+    "schema_ttl_seconds": 3600,
+    "cache_dir": ".operator-pass-cache"
+  },
+
+  "preferred_tools": {
+    "cold_email_validation": "cold-email-linter",
+    "evp_generation": "evp-generator",
+    "competitive_research": "competitive-teardown",
+    "geo_audit": "geo-visibility",
+    "pricing_lab": "pricing-page-lab"
+  },
+
+  "usage": {
+    "log_calls": true,
+    "log_path": ".operator-pass-cache/usage.jsonl",
+    "warn_at_remaining_quota_percent": 20
+  }
+}
