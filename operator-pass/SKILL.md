@@ -1,0 +1,205 @@
+---
+name: operator-pass
+description: >
+  Operator Pass API skill for Claude Code. Wraps the JMC tools API at
+  api.jaymountconsulting.com/v1/tools/<slug> for cross-runtime agent use —
+  Cold Email Linter, EVP Generator, Pipeline Calculator, GEO Visibility
+  Audit, Competitive Teardown, Paid Media Teardown, Blended GTM Dashboard,
+  and 15 more multi-input modelers and generators. Bring your own Operator
+  Pass API key (env var OPERATOR_PASS_API_KEY); subscribe at
+  jaymountconsulting.com/operator-pass. Triggers on: "lint this cold email",
+  "generate an EVP via API", "run the pipeline calculator", "GEO audit",
+  "competitive teardown", "operator pass tool", "JMC API", "subscription
+  tool", "agent-callable tool".
+allowed-tools:
+  - Read
+  - Bash
+  - WebFetch
+  - Write
+---
+
+# Operator Pass — API Skill
+
+Wraps the **JMC tools API** for use inside any Claude Code agent —
+or any MCP-aware runtime. Each tool is a server-side, schema-validated,
+real-result endpoint (not a prompt). Use them in your Claude / Cursor /
+Codex / Gemini flows the same way you'd use a built-in tool.
+
+## Bring your own key
+
+This skill calls the JMC API. You need an active **Operator Pass**
+subscription and an API key, exposed via env var:
+
+```bash
+export OPERATOR_PASS_API_KEY="op_live_..."
+```
+
+The skill detects a missing or invalid key and tells the user how to
+subscribe:
+
+> → Get an API key at https://jaymountconsulting.com/operator-pass
+
+No key, no calls. The skill won't call the API anonymously.
+
+## Quick reference
+
+| Slash | What it does |
+|---|---|
+| `/operator-pass` | Interactive — detect intent, route to a tool |
+| `/operator-pass list` | List all available tools + their input schemas |
+| `/operator-pass call <slug>` | Call a specific tool with JSON inputs |
+| `/operator-pass status` | Check API key validity + remaining quota |
+
+## Available tools (current catalog)
+
+The JMC tools API exposes 22+ multi-input modelers, generators, and
+auditors. Each one is server-side, schema-validated, and returns
+structured JSON (not LLM-narrated prose).
+
+### Outbound + cold email
+
+| Tool slug | What it does |
+|---|---|
+| `cold-email-linter` | Per-email score + line-level rewrite recommendations |
+| `linkedin-post-critic` | Critique + 3 register-varied rewrites |
+| `linkedin-hook-grader` | First-line hook scoring across 5 archetypes |
+| `nurture-sequence-planner` | 5-email nurture stream with route-to-sales triggers |
+
+### Foundation + targeting
+
+| Tool slug | What it does |
+|---|---|
+| `evp-generator` | Schwartz-awareness EVP variants by tier |
+| `evp-brief-generator` | Structured 3-tier EVP brief |
+| `persona-from-crm` | CSV → AI clusters → PSPs per cluster |
+| `offer-lever-scorer` | 5-lever offer score + rewrite |
+| `buyer-journey-mapper` | ICP+pains → 5-stage Schwartz template |
+
+### Demand + content
+
+| Tool slug | What it does |
+|---|---|
+| `geo-visibility` | URL → 5-dim AI-visibility score + ranked fixes |
+| `competitive-teardown` | URL → 6-bullet positioning teardown |
+| `paid-media-teardown` | 5-lever ad creative teardown |
+| `ad-creative-scorer` | Score against the JMC creative framework |
+| `pricing-page-lab` | Tiers + decoy → rendered mock + rationale |
+
+### Revenue + math
+
+| Tool slug | What it does |
+|---|---|
+| `cohort-economics-modeler` | LTV/payback/cohort contribution + verdict |
+| `channel-matrix-scorer` | Volume × ACV × Accessibility ranker |
+| `blended-gtm-dashboard` | 11-slider dashboard, marquee modeler |
+| `gtm-architecture-diagrammer` | Canvas + AI coherence audit |
+
+(Full catalog + per-tool input schema at runtime via `/operator-pass list`.)
+
+## Workflow
+
+### 1. Validate the API key
+
+On first call, validate:
+
+```bash
+curl -s https://api.jaymountconsulting.com/v1/me \
+  -H "Authorization: Bearer $OPERATOR_PASS_API_KEY"
+```
+
+If 401 or 403, surface:
+
+> Your Operator Pass API key is missing / expired / invalid.
+> Get or renew at https://jaymountconsulting.com/operator-pass.
+
+### 2. Route to the right tool
+
+Detect intent from the user's request:
+
+| User says | Route to |
+|---|---|
+| "Lint this cold email" | `cold-email-linter` |
+| "Critique this LinkedIn post" | `linkedin-post-critic` |
+| "Generate an EVP" | `evp-generator` |
+| "Build an EVP brief" | `evp-brief-generator` |
+| "GEO audit on <URL>" | `geo-visibility` |
+| "Competitive teardown of <URL>" | `competitive-teardown` |
+| "Run the pipeline math" | `blended-gtm-dashboard` |
+| "Score this ad creative" | `ad-creative-scorer` |
+
+If intent is ambiguous, ask one clarifying question. Don't list tools
+unless the user asks.
+
+### 3. Gather the inputs per tool schema
+
+Each tool publishes its input schema at:
+
+```
+GET https://api.jaymountconsulting.com/v1/tools/<slug>/schema
+```
+
+Fetch the schema, validate the user's inputs against it, and ask for
+any missing required fields.
+
+### 4. Call the tool
+
+```bash
+curl -s -X POST "https://api.jaymountconsulting.com/v1/tools/<slug>" \
+  -H "Authorization: Bearer $OPERATOR_PASS_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '<inputs>'
+```
+
+### 5. Surface the result
+
+Each tool returns structured JSON. Pretty-print the result, then offer
+"the next step" — usually:
+
+- For audit tools (`geo-visibility`, `cold-email-linter`,
+  `competitive-teardown`): "Want me to draft the fix for the top
+  issue?"
+- For generator tools (`evp-generator`, `nurture-sequence-planner`):
+  "Want me to A/B test these variants against your existing copy?"
+- For modeler tools (`blended-gtm-dashboard`,
+  `cohort-economics-modeler`): "Want me to run a sensitivity analysis
+  on the top 2 levers?"
+
+## Sub-skills
+
+- [`skills/operator-pass-call`](../skills/operator-pass-call) — invoke a specific tool by slug
+- [`skills/operator-pass-list`](../skills/operator-pass-list) — list available tools + schemas
+
+## Rate limits + costs
+
+Each tool's API cost is included in your Operator Pass subscription
+($2,400/yr Founder rate, through July 16 2026; standard pricing
+after). Per-tool rate limits and any per-call cost are documented at:
+
+→ https://jaymountconsulting.com/operator-pass/api
+
+The skill respects rate-limit headers and tells the user when they're
+throttled.
+
+## Plugs into
+
+Pairs especially well with:
+
+- **[claude-cold-email](https://github.com/cmj-hub/claude-cold-email)** — `cold-email-linter` validates drafts; `linkedin-hook-grader` scores hooks
+- **[claude-psp](https://github.com/cmj-hub/claude-psp)** — `persona-from-crm` clusters real prospect data into PSPs
+- **[claude-evp](https://github.com/cmj-hub/claude-evp)** — `evp-generator` produces variants; `evp-brief-generator` produces full briefs
+
+The free framework skills give you the methodology. The API gives you
+the deterministic execution layer.
+
+## Operator Pass
+
+[Operator Pass](https://jaymountconsulting.com/operator-pass) is the
+all-access subscription to:
+
+- The full Compounding Engine course catalog (27 courses, 4 modules)
+- The 22-tool API (this skill wraps it)
+- Weekly office hours with Jay
+- Founder pricing locked at $2,400/yr through July 16 2026 (only 100
+  Founder seats available)
+
+→ [jaymountconsulting.com/operator-pass](https://jaymountconsulting.com/operator-pass)
