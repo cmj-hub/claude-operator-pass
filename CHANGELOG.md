@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1] — 2026-05-24
+
+Marketplace-submission compliance pass. No functional changes.
+
+### Fixed
+- `plugin.json` `author` field now an object `{ "name": "..." }` per Claude Code plugin manifest schema. `claude plugin validate` now passes.
+
 ## [0.2.0] — 2026-05-23
 
 Polish pass matching the v0.2 family.
