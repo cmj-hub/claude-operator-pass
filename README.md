@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./assets/header.svg" alt="claude-operator-pass — Operator Pass API wrapper" width="100%">
+</p>
+
 # claude-operator-pass
 
 > Replace a $30K analyst-tool subscription stack with one Operator Pass
@@ -12,6 +16,7 @@ Subscriber-gated. Bring your own **[Operator Pass](https://jaymountconsulting.co
 API key.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/cmj-hub/claude-operator-pass?style=social)](https://github.com/cmj-hub/claude-operator-pass)
 ![Sub-skills](https://img.shields.io/badge/Sub--skills-4-blue)
 ![Scripts](https://img.shields.io/badge/Scripts-1-green)
 ![BYO API key](https://img.shields.io/badge/Auth-BYO%20API%20key-orange)
