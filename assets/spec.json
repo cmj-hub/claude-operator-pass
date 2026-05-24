@@ -1,0 +1,12 @@
+{
+  "title": "Operator Pass",
+  "subtitle": "52 deterministic JMC tools for any agent runtime",
+  "accent_color": "#00D4FF",
+  "tagline_top": "JMC Skill Pack",
+  "demo_steps": [
+    { "duration_ms": 1200, "title": "Subscribe", "body": "One Operator Pass key, all 52 tools" },
+    { "duration_ms": 1200, "title": "Wrap",      "body": "Call any JMC tool by name" },
+    { "duration_ms": 1200, "title": "Stream",    "body": "Results into your agent runtime" },
+    { "duration_ms": 1200, "title": "Scale",     "body": "Pay-per-call or unlimited tier" }
+  ]
+}
