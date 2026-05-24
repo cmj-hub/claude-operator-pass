@@ -21,6 +21,10 @@ API key.
 ![Scripts](https://img.shields.io/badge/Scripts-1-green)
 ![BYO API key](https://img.shields.io/badge/Auth-BYO%20API%20key-orange)
 
+<p align="center">
+  <img src="./assets/demo.gif" alt="claude-operator-pass — terminal demo of the API key gate" width="100%">
+</p>
+
 ## What it does
 
 ```mermaid
