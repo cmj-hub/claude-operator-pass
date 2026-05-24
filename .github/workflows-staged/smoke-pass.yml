@@ -1,0 +1,39 @@
+# Operator Pass API nightly smoke
+# Confirms api.jaymountconsulting.com /me responds + tools catalog is reachable.
+# Only deployed in claude-operator-pass.
+#
+# Requires:
+#   OPERATOR_PASS_API_KEY — org secret, claude-operator-pass-only visibility
+name: Smoke (Operator Pass API)
+
+on:
+  schedule:
+    - cron: "0 9 * * *"   # 09:00 UTC daily
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    name: Hit /me + /tools
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run op_api.py whoami
+        env:
+          OPERATOR_PASS_API_KEY: ${{ secrets.OPERATOR_PASS_API_KEY }}
+        run: |
+          if [ -z "${OPERATOR_PASS_API_KEY}" ]; then
+            echo "OPERATOR_PASS_API_KEY secret not set — set it via:"
+            echo "  gh secret set OPERATOR_PASS_API_KEY --repo cmj-hub/claude-operator-pass"
+            exit 1
+          fi
+          python3 scripts/op_api.py whoami
+
+      - name: Run op_api.py list
+        env:
+          OPERATOR_PASS_API_KEY: ${{ secrets.OPERATOR_PASS_API_KEY }}
+        run: python3 scripts/op_api.py list

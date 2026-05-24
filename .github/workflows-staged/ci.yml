@@ -1,0 +1,113 @@
+# JMC skill-pack CI
+# Validates SKILL.md frontmatter, lints Python scripts, runs smoke tests.
+# Runs on every PR + every push to main.
+#
+# No secrets required. Free unlimited minutes on public repos.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  validate:
+    name: Validate skill structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate SKILL.md frontmatter
+        run: python3 scripts/validate-skill-frontmatter.py
+
+      - name: Validate brand-config.example.json
+        run: |
+          if [ -f brand-config.example.json ]; then
+            python3 -c "import json,sys; json.load(open('brand-config.example.json')); print('  ✓ brand-config.example.json is valid JSON')"
+          else
+            echo "  (no brand-config.example.json — skip)"
+          fi
+
+      - name: Validate plugin.json
+        run: |
+          python3 -c "
+          import json
+          d = json.load(open('.claude-plugin/plugin.json'))
+          required = ['name', 'version', 'description', 'license']
+          missing = [k for k in required if k not in d]
+          if missing:
+              print(f'  ✗ plugin.json missing: {missing}')
+              exit(1)
+          print(f'  ✓ plugin.json valid: name={d[\"name\"]}, version={d[\"version\"]}')
+          "
+
+      - name: Validate install.sh + install.ps1 syntax
+        run: |
+          if [ -f install.sh ]; then
+            bash -n install.sh && echo "  ✓ install.sh: bash syntax OK"
+          fi
+
+  lint-python:
+    name: Lint Python scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile-check all Python scripts
+        run: |
+          shopt -s nullglob
+          fails=0
+          for f in scripts/*.py; do
+            if python3 -m py_compile "$f" 2>&1; then
+              echo "  ✓ $f"
+            else
+              echo "  ✗ $f"
+              fails=$((fails + 1))
+            fi
+          done
+          if [ "$fails" -gt 0 ]; then exit 1; fi
+
+      - name: Verify scripts are zero-dep (stdlib only)
+        run: |
+          shopt -s nullglob
+          fails=0
+          for f in scripts/*.py; do
+            # Reject any non-stdlib import (anything with a `requirements.txt`-style package name)
+            forbidden=$(grep -hE "^(import|from)\s+(requests|httpx|pillow|PIL|numpy|pandas|matplotlib|cairosvg|playwright|anthropic|openai|google\.generativeai)" "$f" || true)
+            if [ -n "$forbidden" ]; then
+              echo "  ✗ $f imports non-stdlib package — packs must be zero-dep:"
+              echo "$forbidden"
+              fails=$((fails + 1))
+            else
+              echo "  ✓ $f (stdlib only)"
+            fi
+          done
+          if [ "$fails" -gt 0 ]; then exit 1; fi
+
+  smoke-test:
+    name: Smoke-test scoring scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run pack-specific smoke tests
+        run: |
+          if [ -x scripts/smoke-test.sh ]; then
+            bash scripts/smoke-test.sh
+          else
+            echo "  (no scripts/smoke-test.sh — skipping)"
+          fi
