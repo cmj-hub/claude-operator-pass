@@ -28,7 +28,7 @@ API key.
 ## What it does
 
 ```mermaid
-graph LR
+graph TB
     A["/operator-pass"] --> B{Kickoff: state check}
     B -->|No key| C[Show subscribe link]
     B -->|Key + no config| D[Onboarding]
