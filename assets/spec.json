@@ -1,12 +1,25 @@
 {
   "title": "Operator Pass",
-  "subtitle": "52 deterministic JMC tools for any agent runtime",
-  "accent_color": "#00D4FF",
+  "subtitle": "Wrap the JMC tools API for any agent runtime",
+  "accent_color": "#CC4714",
   "tagline_top": "JMC Skill Pack",
-  "demo_steps": [
-    { "duration_ms": 1200, "title": "Subscribe", "body": "One Operator Pass key, all 52 tools" },
-    { "duration_ms": 1200, "title": "Wrap",      "body": "Call any JMC tool by name" },
-    { "duration_ms": 1200, "title": "Stream",    "body": "Results into your agent runtime" },
-    { "duration_ms": 1200, "title": "Scale",     "body": "Pay-per-call or unlimited tier" }
-  ]
+  "command": "/operator-pass",
+  "user_prompt": "run cold-email-linter on draft.md",
+  "response_lines": [
+    "Checking OPERATOR_PASS_API_KEY...",
+    "Fetching tool schema: cold-email-linter v3",
+    "POST /api/tools/cold-email-linter (auth ok)",
+    "Parsing result (22 tools available)...",
+    "Lint complete · spam-score 0.6 / 10"
+  ],
+  "artifact": {
+    "label": "result.json",
+    "lines": [
+      "{",
+      "  \"spam_score\": 0.6,",
+      "  \"flagged_phrases\": [],",
+      "  \"reading_level\": 7.2",
+      "}"
+    ]
+  }
 }
