@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # install.sh — Install claude-operator-pass skill ecosystem
-# Usage: curl -fsSL https://raw.githubusercontent.com/cmj-hub/claude-operator-pass/main/install.sh | bash
+# Usage: curl -fsSL https://raw.githubusercontent.com/JMC-Go-to-market/claude-operator-pass/main/install.sh | bash
 
 set -euo pipefail
 
-REPO_URL="https://github.com/cmj-hub/claude-operator-pass"
+REPO_URL="https://github.com/JMC-Go-to-market/claude-operator-pass"
 SKILLS_DIR="${HOME}/.claude/skills"
 
 if ! command -v git >/dev/null 2>&1; then
@@ -36,7 +36,7 @@ echo ""
 echo "Done. Restart Claude Code to pick up the new skill."
 echo ""
 echo "Setup:"
-echo "  export OPERATOR_PASS_API_KEY=\"op_live_...\""
+echo "  export OPERATOR_PASS_API_KEY=\"jmc_live_...\""
 echo "  Get a key at https://jaymountconsulting.com/operator-pass"
 echo ""
 echo "Try it:"

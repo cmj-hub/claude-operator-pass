@@ -54,7 +54,7 @@ You need an Operator Pass subscription + API key to use this skill.
    - Includes all 22+ tools + the full Compounding Engine course catalog
 
 Once you have a key:
-  export OPERATOR_PASS_API_KEY="op_live_..."
+  export OPERATOR_PASS_API_KEY="jmc_live_..."
 
 Then re-run /operator-pass and I'll walk you through setup.
 ```
@@ -66,7 +66,7 @@ Then re-run /operator-pass and I'll walk you through setup.
 ```
 # Operator Pass status
 
-API key:           ✓ Valid (op_live_xxxxxx_xxxx... — last 4)
+API key:           ✓ Valid (jmc_live_xxxxxx_xxxx... — last 4)
 Plan:              Founder Pass ($2,400/yr, locked through July 16 2026)
 Quota remaining:   847 / 1000 calls this month (84.7%)
 Brand config:      ✓ brand-config.json (5 preferred tools)

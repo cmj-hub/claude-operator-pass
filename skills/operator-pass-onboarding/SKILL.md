@@ -34,7 +34,7 @@ can't do anything. Subscribe at jaymountconsulting.com/operator-pass
 (Founder rate $2,400/yr through July 16 2026, 100 seats).
 
 Once you have a key, set it as an env var:
-  export OPERATOR_PASS_API_KEY="op_live_..."
+  export OPERATOR_PASS_API_KEY="jmc_live_..."
 
 Then come back and run onboarding.
 ```

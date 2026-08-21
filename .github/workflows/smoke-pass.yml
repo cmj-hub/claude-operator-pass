@@ -28,7 +28,7 @@ jobs:
         run: |
           if [ -z "${OPERATOR_PASS_API_KEY}" ]; then
             echo "OPERATOR_PASS_API_KEY secret not set — set it via:"
-            echo "  gh secret set OPERATOR_PASS_API_KEY --repo cmj-hub/claude-operator-pass"
+            echo "  gh secret set OPERATOR_PASS_API_KEY --repo JMC-Go-to-market/claude-operator-pass"
             exit 1
           fi
           python3 scripts/op_api.py whoami

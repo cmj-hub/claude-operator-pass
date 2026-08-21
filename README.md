@@ -16,7 +16,7 @@ Subscriber-gated. Bring your own **[Operator Pass](https://jaymountconsulting.co
 API key.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/cmj-hub/claude-operator-pass?style=social)](https://github.com/cmj-hub/claude-operator-pass)
+[![GitHub stars](https://img.shields.io/github/stars/JMC-Go-to-market/claude-operator-pass?style=social)](https://github.com/JMC-Go-to-market/claude-operator-pass)
 ![Sub-skills](https://img.shields.io/badge/Sub--skills-4-blue)
 ![Scripts](https://img.shields.io/badge/Scripts-1-green)
 ![BYO API key](https://img.shields.io/badge/Auth-BYO%20API%20key-orange)
@@ -72,14 +72,14 @@ AGENTS.md           ← Never call anonymously, never fabricate results, never r
 ### Claude Code
 
 ```bash
-/plugin marketplace add cmj-hub/claude-operator-pass
+/plugin marketplace add JMC-Go-to-market/claude-operator-pass
 /plugin install operator-pass
 ```
 
 ### One-line install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/cmj-hub/claude-operator-pass/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/JMC-Go-to-market/claude-operator-pass/main/install.sh | bash
 ```
 
 ### Setup
@@ -89,7 +89,7 @@ curl -fsSL https://raw.githubusercontent.com/cmj-hub/claude-operator-pass/main/i
 open https://jaymountconsulting.com/operator-pass
 
 # 2. Set the env var
-export OPERATOR_PASS_API_KEY="op_live_..."
+export OPERATOR_PASS_API_KEY="jmc_live_..."
 
 # 3. Run onboarding
 # (in Claude Code)
