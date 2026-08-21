@@ -31,7 +31,7 @@ This skill calls the JMC API. You need an active **Operator Pass**
 subscription and an API key, exposed via env var:
 
 ```bash
-export OPERATOR_PASS_API_KEY="op_live_..."
+export OPERATOR_PASS_API_KEY="jmc_live_..."
 ```
 
 The skill detects a missing or invalid key and tells the user how to

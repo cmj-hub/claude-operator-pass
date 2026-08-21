@@ -7,10 +7,10 @@ fetches the live tool catalog, fetches per-tool schemas, calls tools
 with JSON inputs. Handles 401/402/429/5xx per the brand-config rules.
 
 USAGE:
-    OPERATOR_PASS_API_KEY=op_live_... python3 op_api.py whoami
-    OPERATOR_PASS_API_KEY=op_live_... python3 op_api.py list
-    OPERATOR_PASS_API_KEY=op_live_... python3 op_api.py schema cold-email-linter
-    OPERATOR_PASS_API_KEY=op_live_... python3 op_api.py call cold-email-linter --input '{"email":"..."}'
+    OPERATOR_PASS_API_KEY=jmc_live_... python3 op_api.py whoami
+    OPERATOR_PASS_API_KEY=jmc_live_... python3 op_api.py list
+    OPERATOR_PASS_API_KEY=jmc_live_... python3 op_api.py schema cold-email-linter
+    OPERATOR_PASS_API_KEY=jmc_live_... python3 op_api.py call cold-email-linter --input '{"email":"..."}'
 
 Zero non-stdlib deps. Uses urllib + json.
 """
@@ -30,7 +30,7 @@ from typing import Any, Dict, Optional
 
 DEFAULT_BASE_URL = "https://api.jaymountconsulting.com/v1"
 DEFAULT_TIMEOUT_S = 30
-USER_AGENT = "claude-operator-pass/0.2 (https://github.com/cmj-hub/claude-operator-pass)"
+USER_AGENT = "claude-operator-pass/0.2 (https://github.com/JMC-Go-to-market/claude-operator-pass)"
 
 
 def get_key() -> str:
