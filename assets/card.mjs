@@ -8,7 +8,7 @@ const CHROME = process.env.CHROME_BIN
   || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
 const BRAND = {
-  bg: '#060609', surface: '#0C0C14', fg: '#EAEAF0',
+  bg: '#060609', markBg: '#0A0E12', surface: '#0C0C14', fg: '#EAEAF0',
   primary: '#00D4FF', secondary: '#CC4714', accent: '#8B5CF6',
   border: '#252542', success: '#10B981',
 };
@@ -21,11 +21,11 @@ function html(spec, { w, h, variant }) {
   return `<!doctype html><html><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{width:${w}px;height:${h}px;overflow:hidden}
-  body{background:${BRAND.bg};color:${BRAND.fg};
+  body{background:${spec.dot ? BRAND.markBg : BRAND.bg};color:${BRAND.fg};
     font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
   .card{position:relative;width:${w}px;height:${h}px;display:flex;flex-direction:column;
     align-items:center;justify-content:center;text-align:center;padding:${pad}px;gap:${variant==='header'?14:18}px}
@@ -41,14 +41,17 @@ function html(spec, { w, h, variant }) {
   .inner{position:relative;display:flex;flex-direction:column;align-items:center;gap:inherit;max-width:100%}
   .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:${variant==='header'?15:17}px;
     font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:${accent}}
-  h1{font-family:'Syne',system-ui,sans-serif;font-weight:800;line-height:1.06;
-    letter-spacing:-.02em;color:#fff;font-size:${titleMax}px;white-space:nowrap;
+  h1{font-family:'Syne',system-ui,sans-serif;font-weight:700;line-height:1.06;
+    letter-spacing:-.025em;color:#EAEAF0;font-size:${titleMax}px;white-space:nowrap;
     display:inline-block}
   .sub{font-size:${variant==='header'?21:25}px;color:${BRAND.fg}B3;line-height:1.35;max-width:${w-pad*2}px}
   .proof{display:flex;align-items:center;gap:14px;margin-top:6px;padding:11px 20px;
     border:1px solid ${BRAND.border};border-radius:999px;background:${BRAND.surface}CC}
   .proof .dot{width:7px;height:7px;border-radius:50%;background:${BRAND.success};flex:none}
   .proof span{font-family:'IBM Plex Mono',monospace;font-size:16px;color:${BRAND.fg}D9;white-space:nowrap}
+  .dot{display:inline-block;width:.1525em;height:.115em;margin-left:.02em;
+    background:#00D4FF;vertical-align:baseline;
+    box-shadow:0 0 12px rgba(0,212,255,.20),0 0 20px rgba(0,212,255,.15),0 0 60px rgba(0,212,255,.05)}
   .cta{margin-top:${variant==='header'?4:10}px;font-family:'IBM Plex Mono',monospace;
     font-size:${variant==='header'?15:17}px;color:${accent};letter-spacing:.02em;white-space:nowrap}
 </style></head><body>
@@ -57,7 +60,7 @@ function html(spec, { w, h, variant }) {
   <div class="bar t"></div><div class="bar b"></div>
   <div class="inner">
     <div class="eyebrow">${esc(spec.tagline_top || 'JMC Skill Pack')}</div>
-    <h1 id="t">${esc(spec.title)}</h1>
+    <h1 id="t">${esc(spec.title)}${spec.dot ? '<i class="dot"></i>' : ''}</h1>
     <div class="sub">${esc(spec.subtitle)}</div>
     ${showProof && spec.proof ? `<div class="proof"><i class="dot"></i><span>${esc(spec.proof)}</span></div>` : ''}
     ${spec.cta ? `<div class="cta">${esc(spec.cta)}</div>` : ''}

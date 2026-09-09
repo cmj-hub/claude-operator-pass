@@ -13,7 +13,7 @@ const accent = s.accent_color || '#00D4FF';
 const resp = JSON.stringify(s.response_lines || []);
 const art  = JSON.stringify(s.artifact || null);
 return `<!doctype html><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=DM+Sans:opsz,wght@9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Sans:opsz,wght@9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:${W}px;height:${H}px;overflow:hidden;background:#060609}
@@ -44,7 +44,7 @@ html,body{width:${W}px;height:${H}px;overflow:hidden;background:#060609}
 .end{position:absolute;inset:0;background:#060609;display:flex;flex-direction:column;
   align-items:center;justify-content:center;gap:13px;text-align:center;padding:56px;opacity:0}
 .end .eb{font-size:12px;letter-spacing:.22em;color:${accent};font-weight:500;text-transform:uppercase}
-.end h1{font-family:'Syne',sans-serif;font-weight:800;font-size:52px;color:#fff;letter-spacing:-.02em;line-height:1.05}
+.end h1{font-family:'Syne',sans-serif;font-weight:700;font-size:52px;color:#EAEAF0;letter-spacing:-.025em;line-height:1.05}
 .end .sb{font-family:'DM Sans',sans-serif;font-size:17px;color:#EAEAF0B3}
 .end .pf{margin-top:3px;padding:8px 15px;border:1px solid #252542;border-radius:999px;
   background:#0C0C14;font-size:12.5px;color:#EAEAF0D9}
