@@ -2,11 +2,10 @@
 name: operator-pass-onboarding
 description: First-run interactive setup for the Operator Pass API skill pack. Validates the OPERATOR_PASS_API_KEY env var, fetches the live tool catalog, captures the operator's preferred tools + won't-call list + failure handling preferences + quota awareness. Writes brand-config.json + SOUL.md. Loaded automatically when either file is missing.
 user-invocable: false
-allowed-tools:
-  - Read
-  - Write
-  - Bash
+allowed-tools: Read Write Bash
   - WebFetch
+license: MIT
+
 ---
 
 # Operator Pass Onboarding — first-run setup
@@ -30,8 +29,8 @@ Also user-invocable: "Set up Operator Pass", "Configure operator-pass API".
 First — do you have an Operator Pass subscription?
 
 This pack calls api.jaymountconsulting.com — without a key, it
-can't do anything. Subscribe at jaymountconsulting.com/operator-pass
-(Founder rate $2,400/yr through July 16 2026, 100 seats).
+can't do anything. Subscribe at jaymountconsulting.com/operator-pass.
+Every tool also has a free browser version at jaymountconsulting.com/tools.
 
 Once you have a key, set it as an env var:
   export OPERATOR_PASS_API_KEY="jmc_live_..."

@@ -2,10 +2,10 @@
 name: operator-pass-kickoff
 description: Adaptive router for the Operator Pass API skill pack. Detects state (API key set? brand-config? key still valid? quota remaining? recent calls?) and picks the next-best step. Loaded by the main operator-pass skill on bare invocation.
 user-invocable: false
-allowed-tools:
-  - Read
-  - Bash
+allowed-tools: Read Bash
   - Grep
+license: MIT
+
 ---
 
 # Operator Pass Kickoff — adaptive router
@@ -50,8 +50,8 @@ state = {
 You need an Operator Pass subscription + API key to use this skill.
 
 → Subscribe: https://jaymountconsulting.com/operator-pass
-   - Founder rate $2,400/yr through July 16 2026 (100 seats)
    - Includes all 22+ tools + the full Compounding Engine course catalog
+   - Free browser versions of every tool: https://jaymountconsulting.com/tools
 
 Once you have a key:
   export OPERATOR_PASS_API_KEY="jmc_live_..."
@@ -67,7 +67,7 @@ Then re-run /operator-pass and I'll walk you through setup.
 # Operator Pass status
 
 API key:           ✓ Valid (jmc_live_xxxxxx_xxxx... — last 4)
-Plan:              Founder Pass ($2,400/yr, locked through July 16 2026)
+Plan:              Operator Pass
 Quota remaining:   847 / 1000 calls this month (84.7%)
 Brand config:      ✓ brand-config.json (5 preferred tools)
 SOUL:              ✓ SOUL.md

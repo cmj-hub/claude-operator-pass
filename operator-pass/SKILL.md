@@ -11,11 +11,10 @@ description: >
   "generate an EVP via API", "run the pipeline calculator", "GEO audit",
   "competitive teardown", "operator pass tool", "JMC API", "subscription
   tool", "agent-callable tool".
-allowed-tools:
-  - Read
-  - Bash
-  - WebFetch
+allowed-tools: Read Bash WebFetch
   - Write
+license: MIT
+
 ---
 
 # Operator Pass — API Skill
@@ -171,9 +170,8 @@ Each tool returns structured JSON. Pretty-print the result, then offer
 
 ## Rate limits + costs
 
-Each tool's API cost is included in your Operator Pass subscription
-($2,400/yr Founder rate, through July 16 2026; standard pricing
-after). Per-tool rate limits and any per-call cost are documented at:
+Each tool's API cost is included in your Operator Pass subscription.
+Per-tool rate limits and any per-call cost are documented at:
 
 → https://jaymountconsulting.com/operator-pass/api
 
@@ -199,7 +197,5 @@ all-access subscription to:
 - The full Compounding Engine course catalog (27 courses, 4 modules)
 - The 22-tool API (this skill wraps it)
 - Weekly office hours with Jay
-- Founder pricing locked at $2,400/yr through July 16 2026 (only 100
-  Founder seats available)
 
 → [jaymountconsulting.com/operator-pass](https://jaymountconsulting.com/operator-pass)
