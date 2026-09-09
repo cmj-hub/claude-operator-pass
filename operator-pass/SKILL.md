@@ -11,11 +11,10 @@ description: >
   "generate an EVP via API", "run the pipeline calculator", "GEO audit",
   "competitive teardown", "operator pass tool", "JMC API", "subscription
   tool", "agent-callable tool".
-allowed-tools:
-  - Read
-  - Bash
-  - WebFetch
+allowed-tools: Read Bash WebFetch
   - Write
+license: MIT
+
 ---
 
 # Operator Pass — API Skill

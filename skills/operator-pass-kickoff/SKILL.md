@@ -2,10 +2,10 @@
 name: operator-pass-kickoff
 description: Adaptive router for the Operator Pass API skill pack. Detects state (API key set? brand-config? key still valid? quota remaining? recent calls?) and picks the next-best step. Loaded by the main operator-pass skill on bare invocation.
 user-invocable: false
-allowed-tools:
-  - Read
-  - Bash
+allowed-tools: Read Bash
   - Grep
+license: MIT
+
 ---
 
 # Operator Pass Kickoff — adaptive router

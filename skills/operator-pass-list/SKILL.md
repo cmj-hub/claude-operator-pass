@@ -2,10 +2,10 @@
 name: operator-pass-list
 description: List all available JMC API tools with their slugs, descriptions, and input schemas. Hits the live catalog endpoint so the list is always current. Loaded by the main operator-pass skill when the user asks "what tools are available" or "list the API tools".
 user-invocable: false
-allowed-tools:
-  - Bash
-  - WebFetch
+allowed-tools: Bash WebFetch
   - Read
+license: MIT
+
 ---
 
 # Operator Pass List — sub-skill
