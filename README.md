@@ -190,7 +190,7 @@ all-access subscription:
 
 Every endpoint this skill calls has a free browser version. No account, no key.
 
-- **[All 30+ free tools](https://jaymountconsulting.com/tools)** — linters, calculators, teardowns, modelers
+- **[All 30+ free tools](https://jaymountconsulting.com/prototypes)** — linters, calculators, teardowns, modelers
 - [Skill packs](https://jaymountconsulting.com/skills) — five MIT packs that run locally with no API at all
 - [Frameworks](https://jaymountconsulting.com/frameworks) · [Prompt Library](https://jaymountconsulting.com/resources/prompt-library)
 
@@ -199,6 +199,8 @@ Every endpoint this skill calls has a free browser version. No account, no key.
 [**Growth Audit**](https://jaymountconsulting.com/growth-audit) — a structured read on the whole funnel, sent to your inbox.
 
 That one does ask for an email, and it enrols you in a short follow-up on the same topic. Unsubscribe whenever.
+
+[**The Friday Signal**](https://jaymountconsulting.com/newsletter/signal) — one free edition a week on building GTM systems that compound. No pitch in it.
 
 ## License
 
