@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/header.svg" alt="claude-operator-pass — Operator Pass API wrapper" width="100%">
+  <img src="./assets/header.png" alt="claude-operator-pass — Operator Pass API wrapper" width="100%">
 </p>
 
 # claude-operator-pass
@@ -15,6 +15,7 @@ server-side, schema-validated, real-result endpoints (not prompts).
 Subscriber-gated. Bring your own **[Operator Pass](https://jaymountconsulting.com/operator-pass)**
 API key.
 
+[![skills.sh](https://skills.sh/b/JMC-Go-to-market/claude-operator-pass)](https://skills.sh/JMC-Go-to-market/claude-operator-pass)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/JMC-Go-to-market/claude-operator-pass?style=social)](https://github.com/JMC-Go-to-market/claude-operator-pass)
 ![Sub-skills](https://img.shields.io/badge/Sub--skills-4-blue)
@@ -189,3 +190,11 @@ all-access subscription:
 
 MIT (skill code). The API itself is subscription-gated. Built by
 [Jay Mount Consulting](https://jaymountconsulting.com).
+
+## Regenerating the artwork
+
+`assets/social-preview.png` and `assets/header.png` are generated from `assets/spec.json` by a vendored renderer — no CI, no shared workflow, no network beyond the webfonts:
+
+```bash
+node assets/card.mjs assets/spec.json assets/
+```

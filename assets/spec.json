@@ -1,26 +1,5 @@
-{
-  "renderer_version": 2,
-  "title": "Operator Pass",
-  "subtitle": "Wrap the JMC tools API for any agent runtime",
-  "accent_color": "#CC4714",
-  "tagline_top": "JMC Skill Pack",
-  "command": "/operator-pass",
-  "user_prompt": "run cold-email-linter on draft.md",
-  "response_lines": [
-    "Checking OPERATOR_PASS_API_KEY...",
-    "Fetching tool schema: cold-email-linter v3",
-    "POST /api/tools/cold-email-linter (auth ok)",
-    "Parsing result (22 tools available)...",
-    "Lint complete \u00b7 spam-score 0.6 / 10"
-  ],
-  "artifact": {
-    "label": "result.json",
-    "lines": [
-      "{",
-      "  \"spam_score\": 0.6,",
-      "  \"flagged_phrases\": [],",
-      "  \"reading_level\": 7.2",
-      "}"
-    ]
-  }
-}
+{ "renderer_version": 3, "title": "Operator Pass API",
+  "subtitle": "22 GTM tools your agent can call, in any runtime",
+  "accent_color": "#8B5CF6", "tagline_top": "JMC Skill Pack",
+  "proof": "op_api.py · 22 endpoints · MIT client · bring your own key",
+  "cta": "jaymountconsulting.com/tools" }
