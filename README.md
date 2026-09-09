@@ -162,7 +162,8 @@ Run `/operator-pass list` for the live catalog.
 
 **Total stack**: $1,100-2,200/month = $13K-26K/year for tooling.
 
-**Operator Pass**: $2,400/year flat, 22+ tools, no per-seat pricing.
+**Operator Pass**: one flat subscription, 22+ tools, no per-seat pricing.
+[Current terms](https://jaymountconsulting.com/operator-pass).
 
 This skill packages the tools into an agent-callable interface — your
 runtime knows how to invoke them as if they were built-in.
@@ -184,7 +185,20 @@ all-access subscription:
 - The full Compounding Engine course catalog (27 courses, 4 modules)
 - The 22+ tool API (this skill wraps it)
 - Weekly office hours with Jay
-- Founder rate $2,400/yr locked through July 16 2026 (100 seats)
+
+## Free, no signup
+
+Every endpoint this skill calls has a free browser version. No account, no key.
+
+- **[All 30+ free tools](https://jaymountconsulting.com/tools)** — linters, calculators, teardowns, modelers
+- [Skill packs](https://jaymountconsulting.com/skills) — five MIT packs that run locally with no API at all
+- [Frameworks](https://jaymountconsulting.com/frameworks) · [Prompt Library](https://jaymountconsulting.com/resources/prompt-library)
+
+## Free, by email
+
+[**Growth Audit**](https://jaymountconsulting.com/growth-audit) — a structured read on the whole funnel, sent to your inbox.
+
+That one does ask for an email, and it enrols you in a short follow-up on the same topic. Unsubscribe whenever.
 
 ## License
 
@@ -196,5 +210,6 @@ MIT (skill code). The API itself is subscription-gated. Built by
 `assets/social-preview.png` and `assets/header.png` are generated from `assets/spec.json` by a vendored renderer — no CI, no shared workflow, no network beyond the webfonts:
 
 ```bash
-node assets/card.mjs assets/spec.json assets/
+node assets/card.mjs assets/spec.json assets/          # social-preview.png + header.png
+npm i playwright-core && node assets/demo.mjs assets/spec.json assets/demo.gif
 ```

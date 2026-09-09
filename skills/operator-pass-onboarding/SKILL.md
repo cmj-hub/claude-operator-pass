@@ -29,8 +29,8 @@ Also user-invocable: "Set up Operator Pass", "Configure operator-pass API".
 First — do you have an Operator Pass subscription?
 
 This pack calls api.jaymountconsulting.com — without a key, it
-can't do anything. Subscribe at jaymountconsulting.com/operator-pass
-(Founder rate $2,400/yr through July 16 2026, 100 seats).
+can't do anything. Subscribe at jaymountconsulting.com/operator-pass.
+Every tool also has a free browser version at jaymountconsulting.com/tools.
 
 Once you have a key, set it as an env var:
   export OPERATOR_PASS_API_KEY="jmc_live_..."
